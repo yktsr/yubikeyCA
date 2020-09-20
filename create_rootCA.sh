@@ -16,4 +16,4 @@ function newCA(){
 
 newCA rootCA
 cp ca.conf rootCA
-cp rootCA_cert.pem rootCA/cacert.pem
+mv rootCA_cert.pem rootCA/cacert.pem

@@ -9,6 +9,7 @@ yubico-piv-tool -s 9c -a generate -o public.pem -k${MANAGEMENT_KEY}
 echo 3.2.2 一時的な自己署名証明書の発行
 PIN=123456
 yubico-piv-tool -s 9c -S '/CN=test cert/OU=test/O=hogehoge/L=Minato-ku/ST=Tokyo/C=JP' -P ${PIN} -a verify -a selfsign -i public.pem -o cert.pem
+rm public.pem
 
 openssl x509 -text < cert.pem
 
@@ -19,7 +20,7 @@ read -p "Press enter to continue: "
 
 echo 3.2.3 PIV スロットへの証明書の取り込み
 yubico-piv-tool -a import-certificate -s 9c -i cert.pem
-
+rm cert.pem
 
 
 echo 3.2.4 ルート認証局の公開鍵証明書を作成する
