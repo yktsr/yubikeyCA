@@ -11,7 +11,7 @@
 sudo apt install yubico-piv-tool yubikey-piv-manager libengine-pkcs11-openssl opensc-pkcs11 opensc
 ```
 
-動作はUbuntu16.04、以下のライブラリバージョンで確認しています。
+動作はUbuntu18.04、以下のライブラリバージョンで確認しています。
 * opensc-pkcs11：0.17.0-3
 * libengine-pkcs11-openssl：0.4.7-3
 * yubico-piv-tool：2.1.1\~ppa1\~bionic1
