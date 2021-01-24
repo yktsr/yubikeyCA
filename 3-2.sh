@@ -56,5 +56,5 @@ read -p "Press enter to continue: "
 
 echo 3.2.7 ルート認証局から CRL を発行する
 cd rootCA
-OPENSSL_CONF=ca.conf openssl ca -engine pkcs11 -keyfile slot_0-id_2 -keyform engine -gencrl -passin pass:123456 > revoked.crl
+OPENSSL_CONF=ca.conf openssl ca -engine pkcs11 -keyfile slot_0-id_2 -keyform engine -gencrl -passin pass:$PIN_KEY > revoked.crl
 openssl crl -text < revoked.crl
