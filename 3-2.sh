@@ -30,7 +30,7 @@ SLOT=slot_0-id_2
 
 openssl << EOF
 engine dynamic -pre SO_PATH:$SO_PATH -pre ID:pkcs11 -pre NO_VCHECK:1 -pre LIST_ADD:1 -pre LOAD -pre MODULE_PATH:$MODULE_PATH -pre VERBOSE
-req -new -sha256 -x509 -days 3650 -config rootCA.conf -engine pkcs11 -keyform engine -key $SLOT -passin pass:$PIN_KEY -out rootCA_cert.pem
+req -new -sha256 -x509 -days 3650 -config rootCA.conf -engine pkcs11 -keyform engine -key $SLOT -passin pass:$PIN -out rootCA_cert.pem
 EOF
 
 openssl x509 -text < rootCA_cert.pem
@@ -56,5 +56,5 @@ read -p "Press enter to continue: "
 
 echo 3.2.7 ルート認証局から CRL を発行する
 cd rootCA
-OPENSSL_CONF=ca.conf openssl ca -engine pkcs11 -keyfile slot_0-id_2 -keyform engine -gencrl -passin pass:$PIN_KEY > revoked.crl
+OPENSSL_CONF=ca.conf openssl ca -engine pkcs11 -keyfile slot_0-id_2 -keyform engine -gencrl -passin pass:$PIN > revoked.crl
 openssl crl -text < revoked.crl
